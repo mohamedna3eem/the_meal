@@ -24,7 +24,7 @@ abstract class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) =>
                 getIt<MealsDetailsCubit>(param1: settings.arguments),
-            child: MealDetailsScreen(mealId: settings.arguments as String),
+            child: MealDetailsScreen(),
           ),
         );
       case RouteNames.mealsScreen:
