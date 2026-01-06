@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+/// Generic AppDialog with optional loading indicator.
+/// Use `show(context)` to display.
 class AppDialog extends StatelessWidget {
   const AppDialog({
     super.key,
@@ -12,19 +14,22 @@ class AppDialog extends StatelessWidget {
     this.backgroundColor,
     this.dismissible = true,
     this.imageHeight = 120,
+    this.showLoading = false,
+    this.loadingText,
   });
 
   final String message;
-
   final String? imageAsset;
-
   final String? networkImageUrl;
-
   final String? buttonText;
   final VoidCallback? onAction;
   final Color? backgroundColor;
   final bool dismissible;
   final double imageHeight;
+
+  /// If true show a loader area above the action button.
+  final bool showLoading;
+  final String? loadingText;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +56,7 @@ class AppDialog extends StatelessWidget {
               ],
             ),
 
-
+            // Image area: prefer asset -> network -> fallback icon
             if (imageAsset != null)
               _buildAssetSvg(imageAsset!, imageHeight)
             else if (networkImageUrl != null)
@@ -61,6 +66,7 @@ class AppDialog extends StatelessWidget {
 
             const SizedBox(height: 24),
 
+            // Message
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
@@ -72,11 +78,26 @@ class AppDialog extends StatelessWidget {
 
             const SizedBox(height: 20),
 
-            // Action button
+            // Optional loading indicator (useful for "coming soon" or async operations)
+            if (showLoading) ...[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2)),
+                  const SizedBox(width: 12),
+                  Text(loadingText ?? 'Loading...'),
+                ],
+              ),
+              const SizedBox(height: 16),
+            ],
+
+            // Action button (disabled while loading)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: showLoading
+                    ? null
+                    : () {
                   Navigator.of(context).pop();
                   if (onAction != null) onAction!();
                 },
@@ -110,7 +131,6 @@ class AppDialog extends StatelessWidget {
     final isSvg = url.toLowerCase().endsWith('.svg');
 
     if (isSvg) {
-      // Svg from network
       return SvgPicture.network(
         url,
         height: height,
@@ -121,7 +141,6 @@ class AppDialog extends StatelessWidget {
         ),
       );
     } else {
-      // Raster image (png/jpg/etc)
       return Image.network(
         url,
         height: height,
@@ -161,6 +180,8 @@ class AppDialog extends StatelessWidget {
     VoidCallback? onAction,
     Color? backgroundColor,
     bool dismissible = true,
+    bool showLoading = false,
+    String? loadingText,
   }) =>
       AppDialog(
         message: message,
@@ -170,6 +191,8 @@ class AppDialog extends StatelessWidget {
         onAction: onAction,
         backgroundColor: backgroundColor,
         dismissible: dismissible,
+        showLoading: showLoading,
+        loadingText: loadingText,
       );
 
   factory AppDialog.error({
@@ -180,6 +203,8 @@ class AppDialog extends StatelessWidget {
     VoidCallback? onAction,
     Color? backgroundColor,
     bool dismissible = true,
+    bool showLoading = false,
+    String? loadingText,
   }) =>
       AppDialog(
         message: message,
@@ -189,8 +214,11 @@ class AppDialog extends StatelessWidget {
         onAction: onAction,
         backgroundColor: backgroundColor,
         dismissible: dismissible,
+        showLoading: showLoading,
+        loadingText: loadingText,
       );
 
+  /// For "coming soon" default to showing a loader (you can override)
   factory AppDialog.soon({
     required String message,
     String? imageAsset,
@@ -199,15 +227,19 @@ class AppDialog extends StatelessWidget {
     VoidCallback? onAction,
     Color? backgroundColor,
     bool dismissible = true,
+    bool showLoading = true,
+    String? loadingText,
   }) =>
       AppDialog(
         message: message,
         imageAsset: imageAsset,
         networkImageUrl: networkImageUrl,
-        buttonText: buttonText,
+        buttonText: buttonText ?? 'OK',
         onAction: onAction,
         backgroundColor: backgroundColor,
         dismissible: dismissible,
+        showLoading: showLoading,
+        loadingText: loadingText,
       );
 
   factory AppDialog.result({
@@ -219,6 +251,8 @@ class AppDialog extends StatelessWidget {
     VoidCallback? onAction,
     Color? backgroundColor,
     bool dismissible = true,
+    bool showLoading = false,
+    String? loadingText,
   }) =>
       isSuccess
           ? AppDialog.success(
@@ -229,6 +263,8 @@ class AppDialog extends StatelessWidget {
         onAction: onAction,
         backgroundColor: backgroundColor,
         dismissible: dismissible,
+        showLoading: showLoading,
+        loadingText: loadingText,
       )
           : AppDialog.error(
         message: message,
@@ -238,5 +274,7 @@ class AppDialog extends StatelessWidget {
         onAction: onAction,
         backgroundColor: backgroundColor,
         dismissible: dismissible,
+        showLoading: showLoading,
+        loadingText: loadingText,
       );
 }
