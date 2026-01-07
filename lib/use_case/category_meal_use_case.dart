@@ -1,7 +1,5 @@
-import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:the_meal/core/api_result/api_result.dart';
-import 'package:the_meal/core/failure.dart';
 import 'package:the_meal/domain/entites/meal_cat_response_entity.dart';
 import 'package:the_meal/domain/repo/categories_repo.dart';
 @injectable

@@ -10,7 +10,7 @@ class MealsDetailsDto {
   @JsonKey(name: "strMeal")
   final String? strMeal;
   @JsonKey(name: "strMealAlternate")
-  final dynamic? strMealAlternate;
+  final String? strMealAlternate;
   @JsonKey(name: "strCategory")
   final String? strCategory;
   @JsonKey(name: "strArea")
@@ -54,15 +54,15 @@ class MealsDetailsDto {
   @JsonKey(name: "strIngredient15")
   final String? strIngredient15;
   @JsonKey(name: "strIngredient16")
-  final dynamic? strIngredient16;
+  final String? strIngredient16;
   @JsonKey(name: "strIngredient17")
-  final dynamic? strIngredient17;
+  final String? strIngredient17;
   @JsonKey(name: "strIngredient18")
-  final dynamic? strIngredient18;
+  final String? strIngredient18;
   @JsonKey(name: "strIngredient19")
-  final dynamic? strIngredient19;
+  final String? strIngredient19;
   @JsonKey(name: "strIngredient20")
-  final dynamic? strIngredient20;
+  final String? strIngredient20;
   @JsonKey(name: "strMeasure1")
   final String? strMeasure1;
   @JsonKey(name: "strMeasure2")
@@ -112,7 +112,7 @@ class MealsDetailsDto {
   @JsonKey(name: "dateModified")
   final String? dateModified;
 
-  MealsDetailsDto ({
+  MealsDetailsDto({
     this.idMeal,
     this.strMeal,
     this.strMealAlternate,
@@ -175,62 +175,62 @@ class MealsDetailsDto {
   Map<String, dynamic> toJson() {
     return _$MealsDetailsDtoToJson(this);
   }
-  MealsDetailsEntity toEntity(){
-    return MealsDetailsEntity(
-      strCategory: strCategory ,
-      idMeal: idMeal,
-      dateModified: dateModified,
-      strArea: strArea,
-      strCreativeCommonsConfirmed:strCreativeCommonsConfirmed,
-      strImageSource: strImageSource,
-      strIngredient1: strIngredient1,
-      strIngredient2: strIngredient2,
-      strIngredient3: strIngredient3,
-      strIngredient4: strIngredient4,
-      strIngredient5: strIngredient5,
-      strIngredient6: strIngredient6,
-      strIngredient7: strIngredient7,
-      strIngredient8: strIngredient8,
-      strIngredient9: strIngredient9,
-      strIngredient10: strIngredient10,
-      strIngredient11: strIngredient11,
-      strIngredient12: strIngredient12,
-      strIngredient13: strIngredient13,
-      strIngredient14: strIngredient14,
-      strIngredient15: strIngredient15,
-      strIngredient16: strIngredient16,
-      strIngredient17: strIngredient17,
-      strIngredient18: strIngredient18,
-      strIngredient19: strIngredient19,
-      strIngredient20: strIngredient20,
-      strInstructions: strInstructions,
-      strMeal: strMeal,
-      strMealAlternate: strMealAlternate,
-      strMealThumb: strMealThumb,
-      strMeasure1: strMeasure1,
-      strMeasure2: strMeasure2,
-      strMeasure3: strMeasure3,
-      strMeasure4: strMeasure4,
-      strMeasure5: strMeasure5,
-      strMeasure6: strMeasure6,
-      strMeasure7: strMeasure7,
-      strMeasure8: strMeasure8,
-      strMeasure9: strMeasure9,
-      strMeasure10: strMeasure10,
-      strMeasure11: strMeasure11,
-      strMeasure12: strMeasure12,
-      strMeasure13: strMeasure13,
-      strMeasure14: strMeasure14,
-      strMeasure15: strMeasure15,
-      strMeasure16: strMeasure16,
-      strMeasure17: strMeasure17,
-      strMeasure18: strMeasure18,
-      strMeasure19: strMeasure19,
-      strMeasure20: strMeasure20,
-      strSource: strSource,
-      strTags: strTags,
-      strYoutube: strYoutube,
 
+  MealsDetailsEntity toEntity() {
+    return MealsDetailsEntity(
+      strCategory: strCategory ?? "",
+      idMeal: idMeal ?? "",
+      dateModified: dateModified ?? "",
+      strArea: strArea ?? "",
+      strCreativeCommonsConfirmed: strCreativeCommonsConfirmed ?? "",
+      strImageSource: strImageSource ?? "",
+      strIngredient1: strIngredient1 ?? "",
+      strIngredient2: strIngredient2 ?? "",
+      strIngredient3: strIngredient3 ?? "",
+      strIngredient4: strIngredient4 ?? "",
+      strIngredient5: strIngredient5 ?? "",
+      strIngredient6: strIngredient6 ?? "",
+      strIngredient7: strIngredient7 ?? "",
+      strIngredient8: strIngredient8 ?? "",
+      strIngredient9: strIngredient9 ?? "",
+      strIngredient10: strIngredient10 ?? "",
+      strIngredient11: strIngredient11 ?? "",
+      strIngredient12: strIngredient12 ?? "",
+      strIngredient13: strIngredient13 ?? "",
+      strIngredient14: strIngredient14 ?? "",
+      strIngredient15: strIngredient15 ?? "",
+      strIngredient16: strIngredient16 ?? "",
+      strIngredient17: strIngredient17 ?? "",
+      strIngredient18: strIngredient18 ?? "",
+      strIngredient19: strIngredient19 ?? "",
+      strIngredient20: strIngredient20 ?? "",
+      strInstructions: strInstructions ?? "",
+      strMeal: strMeal ?? "",
+      strMealAlternate: strMealAlternate ?? "",
+      strMealThumb: strMealThumb ?? "",
+      strMeasure1: strMeasure1 ?? "",
+      strMeasure2: strMeasure2 ?? "",
+      strMeasure3: strMeasure3 ?? "",
+      strMeasure4: strMeasure4 ?? "",
+      strMeasure5: strMeasure5 ?? "",
+      strMeasure6: strMeasure6 ?? "",
+      strMeasure7: strMeasure7 ?? "",
+      strMeasure8: strMeasure8 ?? "",
+      strMeasure9: strMeasure9 ?? "",
+      strMeasure10: strMeasure10 ?? "",
+      strMeasure11: strMeasure11 ?? "",
+      strMeasure12: strMeasure12 ?? "",
+      strMeasure13: strMeasure13 ?? "",
+      strMeasure14: strMeasure14 ?? "",
+      strMeasure15: strMeasure15 ?? "",
+      strMeasure16: strMeasure16 ?? "",
+      strMeasure17: strMeasure17 ?? "",
+      strMeasure18: strMeasure18 ?? "",
+      strMeasure19: strMeasure19 ?? "",
+      strMeasure20: strMeasure20 ?? "",
+      strSource: strSource ?? "",
+      strTags: strTags ?? "",
+      strYoutube: strYoutube ?? "",
     );
   }
 }
