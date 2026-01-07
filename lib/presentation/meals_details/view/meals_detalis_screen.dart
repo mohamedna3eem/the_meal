@@ -16,7 +16,7 @@ class MealDetailsScreen extends StatelessWidget {
 
           final meal = cubit.meal;
           final imageUrl = cubit.imageUrl;
-          final ingredients = cubit.ingredients;
+          final ingredients = meal?.ingredients;
           return LoadingWidget(
             loadingState: cubit.loading,
             onRetry: () => cubit.loadMealsDetails(),
@@ -53,25 +53,28 @@ class MealDetailsScreen extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        ListView.separated(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: ingredients.length,
-                          separatorBuilder: (_, __) =>
-                              const SizedBox(height: 6),
-                          itemBuilder: (_, i) {
-                            final item = ingredients[i];
-                            return ListTile(
-                              leading: const Icon(
-                                Icons.check_circle,
-                                color: Colors.green,
-                              ),
-                              title: Text(
-                                '${item['measure']} ${item['ingredient']}',
-                              ),
-                            );
-                          },
-                        ),
+                        if (meal == null)
+                          SizedBox()
+                        else
+                          ListView.separated(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: meal.ingredients.length,
+                            separatorBuilder: (_, __) =>
+                                const SizedBox(height: 6),
+                            itemBuilder: (_, i) {
+                              final item = ingredients?[i];
+                              return ListTile(
+                                leading: const Icon(
+                                  Icons.check_circle,
+                                  color: Colors.green,
+                                ),
+                                title: Text(
+                                  '${item?['measure']} ${item?['ingredient']}',
+                                ),
+                              );
+                            },
+                          ),
                         const Divider(height: 40),
                         Text(meal?.strMeal ?? 'No instructions available.'),
                       ],

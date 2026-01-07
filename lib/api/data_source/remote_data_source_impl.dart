@@ -1,9 +1,6 @@
-import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:the_meal/api/client/api_client.dart';
 import 'package:the_meal/core/api_result/api_result.dart';
-import 'package:the_meal/core/failure.dart';
 import 'package:the_meal/domain/entites/meal_cat_response_entity.dart';
 import 'package:the_meal/domain/entites/meals_details_response_entity.dart';
 import 'package:the_meal/domain/entites/meals_entity.dart';
