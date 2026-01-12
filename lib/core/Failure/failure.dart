@@ -17,13 +17,5 @@ class UnknownFailure extends Failure {
   const UnknownFailure()
       : super("un exepected error");
 }
-class NetworkException extends Failure {
-  final int? statusCode;
 
-  const NetworkException(
-      String message, {
-        this.statusCode,
-        String? details,
-      }) : super(message);
-}
-Exception 
+

@@ -1,4 +1,4 @@
-import 'package:the_meal/core/failure.dart';
+import 'package:the_meal/core/Failure/failure.dart';
 
 sealed class LoadingState {}
 

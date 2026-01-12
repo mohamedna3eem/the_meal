@@ -11,9 +11,8 @@ class MealDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<MealsDetailsCubit, MealsDetailsState>(
-        builder: (context, state) {
+        builder: (context , state) {
           final cubit = context.read<MealsDetailsCubit>();
-
           final meal = cubit.meal;
           final imageUrl = cubit.imageUrl;
           final ingredients = meal?.ingredients;

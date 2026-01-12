@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:the_meal/core/loading/loading_widgit.dart';
 import 'package:the_meal/core/router/routes_name.dart';
 import 'package:the_meal/presentation/meals_categories/view_model/categories_states.dart';
 import 'package:the_meal/presentation/meals_categories/view_model/categories_view_model.dart';
@@ -12,38 +13,12 @@ class CategoriesScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Meal Categories'), centerTitle: true),
       body: BlocBuilder<CategoriesCubit, CategoriesState>(
         builder: (context, state) {
-          if (state is CategoriesLoading) {
-            return Center(child: CircularProgressIndicator());
-          }
+          final cubit = context.read<CategoriesCubit>();
+            final categories = cubit.categories;
 
-          if (state is CategoriesResalt) {
-            if (!state.success || state.data == null) {
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.error_outline,
-                      size: 80,
-                      color: Colors.red,
-                    ),
-                    const SizedBox(height: 16),
-                    Text(state.message, textAlign: TextAlign.center),
-                    const SizedBox(height: 24),
-                    ElevatedButton.icon(
-                      onPressed: () =>
-                          context.read<CategoriesCubit>().loadCategories(),
-                      icon: const Icon(Icons.refresh),
-                      label: const Text('Retry'),
-                    ),
-                  ],
-                ),
-              );
-            }
-
-            final categories = state.data!.categories;
-
-            return GridView.builder(
+            return LoadingWidget(loadingState:cubit.loading,
+                onRetry:() => cubit.loadCategories(),
+                child: GridView.builder(
               padding: const EdgeInsets.all(16),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
@@ -80,7 +55,7 @@ class CategoriesScreen extends StatelessWidget {
                               category?.strCategoryThumb ?? "",
                               fit: BoxFit.cover,
                               errorBuilder: (_, __, ___) =>
-                                  const Icon(Icons.fastfood, size: 50),
+                              const Icon(Icons.fastfood, size: 50),
                             ),
                           ),
                         ),
@@ -102,9 +77,7 @@ class CategoriesScreen extends StatelessWidget {
                   ),
                 );
               },
-            );
-          }
-          return const SizedBox();
+            ));
         },
       ),
     );

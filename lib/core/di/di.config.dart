@@ -30,13 +30,16 @@ import '../dio_module.dart' as _i586;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
-  _i174.GetIt init({
+  Future<_i174.GetIt> init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
-  }) {
+  }) async {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final registerModule = _$RegisterModule();
-    gh.lazySingleton<_i361.Dio>(() => registerModule.dio());
+    await gh.lazySingletonAsync<_i361.Dio>(
+      () => registerModule.dio(),
+      preResolve: true,
+    );
     gh.factory<_i508.ApiClient>(() => _i508.ApiClient(gh<_i361.Dio>()));
     gh.factory<_i84.CategoriesRemoteDataSource>(
       () => _i894.CategoriesRemoteDataSourceImpl(gh<_i508.ApiClient>()),
