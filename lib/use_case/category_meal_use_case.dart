@@ -8,6 +8,6 @@ class CategoryMealUseCase {
   CategoriesRepo categoriesRepo;
   CategoryMealUseCase(this.categoriesRepo);
   Future<Result<MealCatResponseEntity,NetworkException>> call() async{
-    return  await categoriesRepo.getMealsCategories();
+    return      await categoriesRepo.getMealsCategories();
   }
 }
