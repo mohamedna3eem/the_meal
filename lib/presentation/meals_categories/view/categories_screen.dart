@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:the_meal/core/loading/loading_widgit.dart';
-import 'package:the_meal/core/router/routes_name.dart';
 import 'package:the_meal/presentation/meals_categories/view/widgets/meals_cat_card.dart';
 import 'package:the_meal/presentation/meals_categories/view_model/categories_states.dart';
 import 'package:the_meal/presentation/meals_categories/view_model/categories_view_model.dart';
@@ -12,7 +12,7 @@ class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Meal Categories'), centerTitle: true),
+      appBar: AppBar(title: Text("meal_categories".tr), centerTitle: true),
       body: BlocBuilder<CategoriesCubit, CategoriesState>(
         builder: (context, state) {
           final cubit = context.read<CategoriesCubit>();
@@ -31,9 +31,7 @@ class CategoriesScreen extends StatelessWidget {
               itemCount: categories.length,
               itemBuilder: (context, index) {
                 final category = categories[index];
-                return MealsCatCard(
-                  category: category,
-                );
+                return MealsCatCard(category: category);
               },
             ),
           );

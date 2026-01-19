@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:the_meal/domain/entites/meals_details_response_entity.dart';
 
 class MealDetailsBody extends StatelessWidget {
@@ -37,8 +38,8 @@ class MealDetailsBody extends StatelessWidget {
                   ),
                 ),
                 const Divider(height: 40),
-                const Text(
-                  'Ingredients',
+                Text(
+                  '_ingredients'.tr,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
 

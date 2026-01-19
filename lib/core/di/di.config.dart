@@ -14,8 +14,6 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
 import '../../api/client/api_client.dart' as _i508;
-import '../../api/data_source/remote_data_source_impl.dart' as _i894;
-import '../../data/data_source/categories_remote_data_source.dart' as _i84;
 import '../../data/repo/categories_repo_impl.dart' as _i591;
 import '../../domain/repo/categories_repo.dart' as _i969;
 import '../../presentation/meals/view_model/meals_view_model.dart' as _i487;
@@ -41,11 +39,8 @@ extension GetItInjectableX on _i174.GetIt {
       preResolve: true,
     );
     gh.factory<_i508.ApiClient>(() => _i508.ApiClient(gh<_i361.Dio>()));
-    gh.factory<_i84.CategoriesRemoteDataSource>(
-      () => _i894.CategoriesRemoteDataSourceImpl(gh<_i508.ApiClient>()),
-    );
     gh.factory<_i969.CategoriesRepo>(
-      () => _i591.CategoriesRepoImpl(gh<_i84.CategoriesRemoteDataSource>()),
+      () => _i591.CategoriesRepoImpl(gh<_i508.ApiClient>()),
     );
     gh.factory<_i937.CategoryMealUseCase>(
       () => _i937.CategoryMealUseCase(gh<_i969.CategoriesRepo>()),

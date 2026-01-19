@@ -28,9 +28,9 @@ class MealsDetailsCubit extends Cubit<MealsDetailsState> {
     result.fold(
       onSuccess: (data) {
         final m = data.meals.first;
-        meal = m ;
+        meal = m;
 
-        imageUrl =   m.strMealThumb ;
+        imageUrl = m.strMealThumb;
         loading = LoadingSuccess(data: data);
         emit(MealsDetailsResalt());
       },

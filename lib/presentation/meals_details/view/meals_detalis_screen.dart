@@ -12,15 +12,15 @@ class MealDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<MealsDetailsCubit, MealsDetailsState>(
-        builder: (context , state) {
+        builder: (context, state) {
           final cubit = context.read<MealsDetailsCubit>();
-          final meal = cubit.meal ;
+          final meal = cubit.meal;
           final imageUrl = cubit.imageUrl;
 
           return LoadingWidget(
             loadingState: cubit.loading,
             onRetry: () => cubit.loadMealsDetails(),
-            child:MealDetailsBody(imageUrl: imageUrl, meal: meal),
+            child: MealDetailsBody(imageUrl: imageUrl, meal: meal),
           );
         },
       ),

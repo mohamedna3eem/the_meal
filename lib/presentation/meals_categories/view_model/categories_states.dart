@@ -1,17 +1,7 @@
+abstract class CategoriesState {}
 
-abstract class CategoriesState {
-  const CategoriesState();
-}
+class CategoriesInitial extends CategoriesState {}
 
-class CategoriesInitial extends CategoriesState {
-  const CategoriesInitial();
-}
+class CategoriesLoading extends CategoriesState {}
 
-class CategoriesLoading extends CategoriesState {
-  const CategoriesLoading();
-}
-
-class CategoriesResalt extends CategoriesState {
-
-}
-
+class CategoriesResalt extends CategoriesState {}

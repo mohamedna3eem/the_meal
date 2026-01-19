@@ -9,8 +9,7 @@ import 'categories_states.dart';
 class CategoriesCubit extends Cubit<CategoriesState> {
   final CategoryMealUseCase getCategoriesUseCase;
 
-  CategoriesCubit(this.getCategoriesUseCase)
-    : super(const CategoriesInitial()) {
+  CategoriesCubit(this.getCategoriesUseCase) : super(CategoriesInitial()) {
     loadCategories();
   }
 
@@ -20,7 +19,7 @@ class CategoriesCubit extends Cubit<CategoriesState> {
 
   Future<void> loadCategories() async {
     loading = Loading();
-    emit(const CategoriesLoading());
+    emit(CategoriesLoading());
 
     final result = await getCategoriesUseCase();
     result.fold(

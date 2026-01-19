@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:the_meal/core/Failure/network_exeption.dart';
+import 'package:the_meal/core/dio/handle_dio_error.dart';
 
 sealed class Result<S, E extends Exception> {
   const Result();
@@ -52,9 +53,8 @@ Future<Result<TOut, NetworkException>> safeApiCall<TIn, TOut>(
   try {
     final result = await apiCall();
     return Success<TOut, NetworkException>(transform(result));
-  } on DioException {
-    final networkException = NetworkErrorException();
-    return Failure<TOut, NetworkException>(networkException);
+  } on DioException catch (e){
+    return Failure<TOut, NetworkException>(handleDioError(e));
   } catch (e) {
     return Failure<TOut, NetworkException>(UnknownException());
   }

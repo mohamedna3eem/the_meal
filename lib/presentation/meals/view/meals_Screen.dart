@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:the_meal/api/models/meals/meals_dto.dart';
+import 'package:get/get.dart';
 import 'package:the_meal/core/loading/loading_widgit.dart';
-import 'package:the_meal/core/router/routes_name.dart';
 import 'package:the_meal/presentation/meals/view/widget/meals_card.dart';
 import 'package:the_meal/presentation/meals/view_model/meals_states.dart';
 import 'package:the_meal/presentation/meals/view_model/meals_view_model.dart';
@@ -15,7 +14,10 @@ class MealsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('$categoryName Meals'), centerTitle: true),
+      appBar: AppBar(
+        title: Text('category_meals'.trParams({'category': categoryName}).tr),
+        centerTitle: true,
+      ),
       body: BlocBuilder<MealsCubit, MealsState>(
         builder: (context, state) {
           final cubit = context.read<MealsCubit>();

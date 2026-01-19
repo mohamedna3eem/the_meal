@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:the_meal/core/router/routes_name.dart';
 import 'package:the_meal/domain/entites/meal_cat_response_entity.dart';
@@ -10,11 +9,9 @@ class MealsCatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Card(
+    return Card(
       elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
         onTap: () {
           Navigator.pushNamed(
@@ -36,7 +33,7 @@ class MealsCatCard extends StatelessWidget {
                   category.strCategoryThumb,
                   fit: BoxFit.cover,
                   errorBuilder: (_, __, ___) =>
-                  const Icon(Icons.fastfood, size: 50),
+                      const Icon(Icons.fastfood, size: 50),
                 ),
               ),
             ),

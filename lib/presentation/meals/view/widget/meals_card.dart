@@ -7,16 +7,18 @@ class MealsCard extends StatelessWidget {
   final String mealId;
   final MealsEntity meal;
 
-   const MealsCard({super.key, required this.imageUrl, required this.mealId,required this.meal});
-
+  const MealsCard({
+    super.key,
+    required this.imageUrl,
+    required this.mealId,
+    required this.meal,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 3,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         onTap: () {
@@ -38,15 +40,11 @@ class MealsCard extends StatelessWidget {
                     return child;
                   }
                   return const Center(
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                    ),
+                    child: CircularProgressIndicator(strokeWidth: 2),
                   );
                 },
                 errorBuilder: (context, error, stackTrace) =>
-                const Center(
-                  child: Icon(Icons.broken_image, size: 48),
-                ),
+                    const Center(child: Icon(Icons.broken_image, size: 48)),
               ),
             ),
             Padding(
