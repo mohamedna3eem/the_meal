@@ -30,10 +30,10 @@ class CategoriesDto {
   }
   CategoriesEntity toEntity(){
     return CategoriesEntity(
-        idCategory: idCategory,
-        strCategory: strCategory,
-        strCategoryDescription: strCategoryDescription,
-        strCategoryThumb: strCategoryThumb
+        idCategory: idCategory??"",
+        strCategory: strCategory??"",
+        strCategoryDescription: strCategoryDescription??"",
+        strCategoryThumb: strCategoryThumb??""
     );
   }
 }

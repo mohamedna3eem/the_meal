@@ -2,7 +2,7 @@ import 'package:the_meal/core/Failure/network_exeption.dart';
 import 'package:the_meal/core/result/result.dart';
 import 'package:the_meal/domain/entites/meal_cat_response_entity.dart';
 import 'package:the_meal/domain/entites/meals_details_response_entity.dart';
-import 'package:the_meal/domain/entites/meals_entity.dart' show MealsResponseEntity;
+import 'package:the_meal/domain/entites/meals_entity.dart';
 
 
 abstract interface class CategoriesRepo {

@@ -1,13 +1,14 @@
 class MealsResponseEntity {
-  final List<MealsEntity>? meals;
-
-  MealsResponseEntity({this.meals});
+  final List<MealsEntity> meals ;
+  MealsResponseEntity({required this.meals});
 }
 
 class MealsEntity {
-  final String? strMeal;
-  final String? strMealThumb;
-  final String? idMeal;
-
-  MealsEntity({this.strMeal, this.strMealThumb, this.idMeal});
+  final String strMeal;
+  final String strMealThumb;
+  final String idMeal;
+  MealsEntity({
+   required this.strMeal ,
+   required this.strMealThumb,
+   required this.idMeal});
 }

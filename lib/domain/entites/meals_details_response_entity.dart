@@ -1,6 +1,6 @@
 class MealDetailsResponseEntity {
-  final List<MealsDetailsEntity>? meals;
-  MealDetailsResponseEntity({this.meals});
+  final List<MealsDetailsEntity> meals;
+  MealDetailsResponseEntity({required this.meals});
 }
 
 class MealsDetailsEntity {

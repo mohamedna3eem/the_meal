@@ -3,9 +3,6 @@ abstract interface class NetworkException implements Exception {
 
   const NetworkException(this.message);
 }
-
-
-
 class ServerException extends NetworkException {
   const ServerException()
       : super("an internet problem try again");

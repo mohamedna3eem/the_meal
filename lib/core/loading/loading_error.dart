@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:the_meal/core/Failure/failure.dart';
+import 'package:the_meal/core/Failure/network_exeption.dart';
 
 class LoadingErrorWidget extends StatelessWidget {
   const LoadingErrorWidget({
@@ -9,7 +9,7 @@ class LoadingErrorWidget extends StatelessWidget {
     required this.onRetry,
   });
 
-  final NetworkFailure exception;
+  final NetworkException exception;
   final VoidCallback onRetry;
 
   @override
@@ -21,7 +21,7 @@ class LoadingErrorWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SvgPicture.asset("assets/images/error.svg", width: 64, height: 64),
+          SvgPicture.asset( "assets/images/error.svg", width: 64, height: 64),
           const SizedBox(height: 32),
           Text("unexpected_error", textAlign: TextAlign.center),
           const SizedBox(height: 12),

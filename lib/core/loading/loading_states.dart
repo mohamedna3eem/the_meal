@@ -1,4 +1,4 @@
-import 'package:the_meal/core/Failure/failure.dart';
+import 'package:the_meal/core/Failure/network_exeption.dart';
 
 sealed class LoadingState {}
 
@@ -17,7 +17,7 @@ class LoadingSuccess<T> extends LoadingState {
 }
 
 class LoadingException extends LoadingState {
-  final NetworkFailure exception;
+  final NetworkException exception;
 
   LoadingException(this.exception);
 }

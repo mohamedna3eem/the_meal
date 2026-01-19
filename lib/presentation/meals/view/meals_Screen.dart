@@ -20,7 +20,7 @@ class MealsScreen extends StatelessWidget {
           final mealsList = cubit.mealsList;
           return LoadingWidget(
             loadingState: cubit.loading,
-            onRetry:()=> cubit.loadMeals(),
+            onRetry: () => cubit.loadMeals(),
             child: GridView.builder(
               padding: const EdgeInsets.all(16),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -29,11 +29,11 @@ class MealsScreen extends StatelessWidget {
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
               ),
-              itemCount: mealsList?.length,
+              itemCount: mealsList.length,
               itemBuilder: (context, index) {
-                final meal = mealsList?[index];
-                final imageUrl = meal?.strMealThumb ;
-                final mealId = meal?.idMeal ?? "" ;
+                final meal = mealsList[index];
+                final imageUrl = meal.strMealThumb;
+                final mealId = meal.idMeal;
 
                 return Card(
                   elevation: 3,
@@ -59,36 +59,29 @@ class MealsScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Expanded(
-                          child: imageUrl != null
-                              ? Image.network(
-                                  imageUrl,
-                                  fit: BoxFit.cover,
-                                  loadingBuilder:
-                                      (context, child, loadingProgress) {
-                                        if (loadingProgress == null)
-                                          return child;
-                                        return const Center(
-                                          child: CircularProgressIndicator(
-                                            strokeWidth: 2,
-                                          ),
-                                        );
-                                      },
-                                  errorBuilder: (context, error, stackTrace) =>
-                                      const Center(
-                                        child: Icon(
-                                          Icons.broken_image,
-                                          size: 48,
-                                        ),
-                                      ),
-                                )
-                              : const Center(
+                          child: Image.network(
+                            imageUrl,
+                            fit: BoxFit.cover,
+                            loadingBuilder: (context, child, loadingProgress) {
+                              if (loadingProgress == null) {
+                                return child;
+                              }
+                              return const Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
+                              );
+                            },
+                            errorBuilder: (context, error, stackTrace) =>
+                                const Center(
                                   child: Icon(Icons.broken_image, size: 48),
                                 ),
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            meal?.strMeal ?? 'No Name',
+                            meal.strMeal,
                             textAlign: TextAlign.center,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,

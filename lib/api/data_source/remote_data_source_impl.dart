@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:injectable/injectable.dart';
 import 'package:the_meal/api/client/api_client.dart';
 import 'package:the_meal/core/Failure/network_exeption.dart';

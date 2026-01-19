@@ -1,4 +1,3 @@
-import 'package:the_meal/domain/entites/meals_entity.dart';
 
 abstract class MealsState {
   const MealsState();
@@ -13,9 +12,6 @@ class MealsLoading extends MealsState {
 }
 
 class MealsResalt extends MealsState {
-  final MealsResponseEntity? data;
-  final String message ;
-  final bool success;
-  const MealsResalt({this.data, required this.message , this.success =true});
+
 }
 

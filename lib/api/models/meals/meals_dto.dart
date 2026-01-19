@@ -26,9 +26,9 @@ class Meals {
   }
   MealsEntity toEntity(){
     return MealsEntity(
-        strMealThumb: strMealThumb,
-        strMeal: strMeal,
-        idMeal: idMeal
+        strMealThumb: strMealThumb??"",
+        strMeal: strMeal??"",
+        idMeal: idMeal??""
     );
   }
 }

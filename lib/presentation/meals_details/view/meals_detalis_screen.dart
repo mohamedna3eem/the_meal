@@ -11,7 +11,7 @@ class MealDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<MealsDetailsCubit, MealsDetailsState>(
-        builder: (context , state) {
+        builder: (context, state) {
           final cubit = context.read<MealsDetailsCubit>();
           final meal = cubit.meal;
           final imageUrl = cubit.imageUrl;
@@ -26,9 +26,7 @@ class MealDetailsScreen extends StatelessWidget {
                   expandedHeight: 300,
                   pinned: true,
                   flexibleSpace: FlexibleSpaceBar(
-                    background: imageUrl != null
-                        ? Image.network(imageUrl, fit: BoxFit.cover)
-                        : const Icon(Icons.broken_image, size: 100),
+                    background: Image.network(imageUrl, fit: BoxFit.cover),
                   ),
                 ),
                 SliverToBoxAdapter(
@@ -38,7 +36,7 @@ class MealDetailsScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          meal?.strMeal ?? 'Unknown Meal',
+                          meal?.strMeal ?? "",
                           style: const TextStyle(
                             fontSize: 26,
                             fontWeight: FontWeight.bold,
@@ -52,30 +50,28 @@ class MealDetailsScreen extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        if (meal == null)
-                          SizedBox()
-                        else
-                          ListView.separated(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: meal.ingredients.length,
-                            separatorBuilder: (_, __) =>
-                                const SizedBox(height: 6),
-                            itemBuilder: (_, i) {
-                              final item = ingredients?[i];
-                              return ListTile(
-                                leading: const Icon(
-                                  Icons.check_circle,
-                                  color: Colors.green,
-                                ),
-                                title: Text(
-                                  '${item?['measure']} ${item?['ingredient']}',
-                                ),
-                              );
-                            },
-                          ),
+
+                        ListView.separated(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: meal?.ingredients.length ?? 0,
+                          separatorBuilder: (_, __) =>
+                              const SizedBox(height: 6),
+                          itemBuilder: (_, i) {
+                            final item = ingredients?[i];
+                            return ListTile(
+                              leading: const Icon(
+                                Icons.check_circle,
+                                color: Colors.green,
+                              ),
+                              title: Text(
+                                '${item?['measure']} ${item?['ingredient']}',
+                              ),
+                            );
+                          },
+                        ),
                         const Divider(height: 40),
-                        Text(meal?.strMeal ?? 'No instructions available.'),
+                        Text(meal?.strMeal ?? ""),
                       ],
                     ),
                   ),

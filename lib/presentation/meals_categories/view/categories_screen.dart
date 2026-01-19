@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:the_meal/core/loading/loading_widgit.dart';
 import 'package:the_meal/core/router/routes_name.dart';
@@ -7,6 +7,7 @@ import 'package:the_meal/presentation/meals_categories/view_model/categories_vie
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,11 +15,12 @@ class CategoriesScreen extends StatelessWidget {
       body: BlocBuilder<CategoriesCubit, CategoriesState>(
         builder: (context, state) {
           final cubit = context.read<CategoriesCubit>();
-            final categories = cubit.categories;
+          final categories = cubit.categories;
 
-            return LoadingWidget(loadingState:cubit.loading,
-                onRetry:() => cubit.loadCategories(),
-                child: GridView.builder(
+          return LoadingWidget(
+            loadingState: cubit.loading,
+            onRetry: () => cubit.loadCategories(),
+            child: GridView.builder(
               padding: const EdgeInsets.all(16),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
@@ -26,9 +28,9 @@ class CategoriesScreen extends StatelessWidget {
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
               ),
-              itemCount: categories?.length,
+              itemCount: categories.length,
               itemBuilder: (context, index) {
-                final category = categories?[index];
+                final category = categories[index];
                 return Card(
                   elevation: 2,
                   shape: RoundedRectangleBorder(
@@ -39,7 +41,7 @@ class CategoriesScreen extends StatelessWidget {
                       Navigator.pushNamed(
                         context,
                         RouteNames.mealsScreen,
-                        arguments: category!.strCategory,
+                        arguments: category.strCategory,
                       );
                     },
                     borderRadius: BorderRadius.circular(12),
@@ -52,17 +54,17 @@ class CategoriesScreen extends StatelessWidget {
                               top: Radius.circular(12),
                             ),
                             child: Image.network(
-                              category?.strCategoryThumb ?? "",
+                              category.strCategoryThumb ,
                               fit: BoxFit.cover,
                               errorBuilder: (_, __, ___) =>
-                              const Icon(Icons.fastfood, size: 50),
+                                  const Icon(Icons.fastfood, size: 50),
                             ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            category?.strCategory ?? 'Unknown',
+                            category.strCategory ,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
@@ -77,7 +79,8 @@ class CategoriesScreen extends StatelessWidget {
                   ),
                 );
               },
-            ));
+            ),
+          );
         },
       ),
     );
