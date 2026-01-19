@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:the_meal/core/loading/loading_widgit.dart';
+import 'package:the_meal/presentation/meals_details/view/widget/meal_details_body.dart';
 import 'package:the_meal/presentation/meals_details/view_model/meals_details_states.dart';
 import 'package:the_meal/presentation/meals_details/view_model/meals_details_view_model.dart';
 
@@ -11,73 +12,15 @@ class MealDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<MealsDetailsCubit, MealsDetailsState>(
-        builder: (context, state) {
+        builder: (context , state) {
           final cubit = context.read<MealsDetailsCubit>();
-          final meal = cubit.meal;
+          final meal = cubit.meal ;
           final imageUrl = cubit.imageUrl;
-          final ingredients = meal?.ingredients;
+
           return LoadingWidget(
             loadingState: cubit.loading,
             onRetry: () => cubit.loadMealsDetails(),
-            child: CustomScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              slivers: [
-                SliverAppBar(
-                  expandedHeight: 300,
-                  pinned: true,
-                  flexibleSpace: FlexibleSpaceBar(
-                    background: Image.network(imageUrl, fit: BoxFit.cover),
-                  ),
-                ),
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          meal?.strMeal ?? "",
-                          style: const TextStyle(
-                            fontSize: 26,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const Divider(height: 40),
-                        const Text(
-                          'Ingredients',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-
-                        ListView.separated(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: meal?.ingredients.length ?? 0,
-                          separatorBuilder: (_, __) =>
-                              const SizedBox(height: 6),
-                          itemBuilder: (_, i) {
-                            final item = ingredients?[i];
-                            return ListTile(
-                              leading: const Icon(
-                                Icons.check_circle,
-                                color: Colors.green,
-                              ),
-                              title: Text(
-                                '${item?['measure']} ${item?['ingredient']}',
-                              ),
-                            );
-                          },
-                        ),
-                        const Divider(height: 40),
-                        Text(meal?.strMeal ?? ""),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            child:MealDetailsBody(imageUrl: imageUrl, meal: meal),
           );
         },
       ),

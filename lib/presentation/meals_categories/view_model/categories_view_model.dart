@@ -16,7 +16,7 @@ class CategoriesCubit extends Cubit<CategoriesState> {
 
   LoadingState loading = Loading();
 
-  List<CategoriesEntity> categories=[];
+  List<CategoriesEntity> categories = [];
 
   Future<void> loadCategories() async {
     loading = Loading();

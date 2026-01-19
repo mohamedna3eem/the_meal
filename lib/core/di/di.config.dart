@@ -26,7 +26,7 @@ import '../../presentation/meals_details/view_model/meals_details_view_model.dar
 import '../../use_case/category_meal_use_case.dart' as _i937;
 import '../../use_case/get_meals_details_use_case.dart' as _i499;
 import '../../use_case/get_meals_use_case.dart' as _i606;
-import '../dio_module.dart' as _i586;
+import '../dio/dio_module.dart' as _i977;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -70,4 +70,4 @@ extension GetItInjectableX on _i174.GetIt {
   }
 }
 
-class _$RegisterModule extends _i586.RegisterModule {}
+class _$RegisterModule extends _i977.RegisterModule {}

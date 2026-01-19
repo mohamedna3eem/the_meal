@@ -35,12 +35,7 @@ abstract class AppRouter {
           ),
         );
       default:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<CategoriesCubit>(),
-            child: CategoriesScreen(),
-          ),
-        );
+        return MaterialPageRoute(builder: (_)=>Container());
     }
   }
 }

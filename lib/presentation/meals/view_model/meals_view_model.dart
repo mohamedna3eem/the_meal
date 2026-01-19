@@ -15,7 +15,7 @@ class MealsCubit extends Cubit<MealsState> {
     loadMeals();
   }
 
-  List<MealsEntity> mealsList=[];
+  List<MealsEntity> mealsList = [];
   LoadingState loading = Loading();
 
   Future<void> loadMeals() async {
