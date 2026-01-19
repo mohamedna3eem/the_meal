@@ -18,6 +18,4 @@ abstract class ApiClient {
   Future<MealsResponseDto> getMealId(@Query("c") String mealId);
   @GET("lookup.php")
   Future<MealDetailsResponseDto> getMealById(@Query("i") String mealId);
-
-
 }

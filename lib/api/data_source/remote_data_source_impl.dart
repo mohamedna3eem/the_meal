@@ -16,7 +16,8 @@ class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
   CategoriesRemoteDataSourceImpl(this.apiClient);
 
   @override
-  Future<Result<MealCatResponseEntity, NetworkException>> getMealsCategories() async {
+  Future<Result<MealCatResponseEntity, NetworkException>>
+  getMealsCategories() async {
     return safeApiCall(
       () => apiClient.getAllCat(),
       (response) => response.toEntity(),
@@ -24,7 +25,9 @@ class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
   }
 
   @override
-  Future<Result<MealsResponseEntity, NetworkException>> getMeals(String id) async {
+  Future<Result<MealsResponseEntity, NetworkException>> getMeals(
+    String id,
+  ) async {
     return safeApiCall(
       () => apiClient.getMealId(id),
       (response) => response.toEntity(),
@@ -32,7 +35,7 @@ class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
   }
 
   @override
-  Future<Result<MealDetailsResponseEntity, NetworkException>>getMealsDetails(
+  Future<Result<MealDetailsResponseEntity, NetworkException>> getMealsDetails(
     String id,
   ) async {
     return safeApiCall(

@@ -113,40 +113,38 @@ class MealsDetailsEntity {
     required this.strCreativeCommonsConfirmed,
     required this.dateModified,
   });
-  List<Map<String, String>> get  ingredients {
+  List<Map<String, String>> get ingredients {
     return [
-      {'ingredient': strIngredient1, 'measure': strMeasure1},
-      {'ingredient': strIngredient2, 'measure': strMeasure2},
-      {'ingredient': strIngredient3, 'measure': strMeasure3},
-      {'ingredient': strIngredient4, 'measure': strMeasure4},
-      {'ingredient': strIngredient5, 'measure': strMeasure5},
-      {'ingredient': strIngredient6, 'measure': strMeasure6},
-      {'ingredient': strIngredient7, 'measure': strMeasure7},
-      {'ingredient': strIngredient8, 'measure': strMeasure8},
-      {'ingredient': strIngredient9, 'measure': strMeasure9},
-      {'ingredient': strIngredient10, 'measure': strMeasure10},
-      {'ingredient': strIngredient11, 'measure': strMeasure11},
-      {'ingredient': strIngredient12, 'measure': strMeasure12},
-      {'ingredient': strIngredient13, 'measure': strMeasure13},
-      {'ingredient': strIngredient14, 'measure': strMeasure14},
-      {'ingredient': strIngredient15, 'measure': strMeasure15},
-      {'ingredient': strIngredient16, 'measure': strMeasure16},
-      {'ingredient': strIngredient17, 'measure': strMeasure17},
-      {'ingredient': strIngredient18, 'measure': strMeasure18},
-      {'ingredient': strIngredient19, 'measure': strMeasure19},
-      {'ingredient': strIngredient20, 'measure': strMeasure20},
-    ]
+          {'ingredient': strIngredient1, 'measure': strMeasure1},
+          {'ingredient': strIngredient2, 'measure': strMeasure2},
+          {'ingredient': strIngredient3, 'measure': strMeasure3},
+          {'ingredient': strIngredient4, 'measure': strMeasure4},
+          {'ingredient': strIngredient5, 'measure': strMeasure5},
+          {'ingredient': strIngredient6, 'measure': strMeasure6},
+          {'ingredient': strIngredient7, 'measure': strMeasure7},
+          {'ingredient': strIngredient8, 'measure': strMeasure8},
+          {'ingredient': strIngredient9, 'measure': strMeasure9},
+          {'ingredient': strIngredient10, 'measure': strMeasure10},
+          {'ingredient': strIngredient11, 'measure': strMeasure11},
+          {'ingredient': strIngredient12, 'measure': strMeasure12},
+          {'ingredient': strIngredient13, 'measure': strMeasure13},
+          {'ingredient': strIngredient14, 'measure': strMeasure14},
+          {'ingredient': strIngredient15, 'measure': strMeasure15},
+          {'ingredient': strIngredient16, 'measure': strMeasure16},
+          {'ingredient': strIngredient17, 'measure': strMeasure17},
+          {'ingredient': strIngredient18, 'measure': strMeasure18},
+          {'ingredient': strIngredient19, 'measure': strMeasure19},
+          {'ingredient': strIngredient20, 'measure': strMeasure20},
+        ]
         .where(
-          (e) =>
-      e['ingredient'] != null &&
-          e['ingredient']!.trim().isNotEmpty,
-    )
+          (e) => e['ingredient'] != null && e['ingredient']!.trim().isNotEmpty,
+        )
         .map(
           (e) => {
-        'ingredient': e['ingredient']!.trim(),
-        'measure': e['measure']?.trim() ?? '',
-      },
-    )
+            'ingredient': e['ingredient']!.trim(),
+            'measure': e['measure']?.trim() ?? '',
+          },
+        )
         .toList();
   }
 }

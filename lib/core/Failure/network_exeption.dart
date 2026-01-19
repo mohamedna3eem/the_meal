@@ -3,17 +3,15 @@ abstract interface class NetworkException implements Exception {
 
   const NetworkException(this.message);
 }
+
 class ServerException extends NetworkException {
-  const ServerException()
-      : super("an internet problem try again");
+  const ServerException() : super("an internet problem try again");
 }
 
 class NetworkErrorException extends NetworkException {
-  const NetworkErrorException()
-      : super("error in yor internet connection ");
+  const NetworkErrorException() : super("error in yor internet connection ");
 }
 
 class UnknownException extends NetworkException {
-  const UnknownException()
-      : super("un exepected error");
+  const UnknownException() : super("un exeption error");
 }

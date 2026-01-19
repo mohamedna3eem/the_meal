@@ -63,16 +63,13 @@ class LoadingWidget extends StatelessWidget {
       children: [
         emptyImagePath.isNotEmpty
             ? SvgPicture.asset(
-          emptyImagePath,
-          height: 120,
-          placeholderBuilder: (_) =>
-          const Icon(Icons.inbox, size: 80),
-        )
+                emptyImagePath,
+                height: 120,
+                placeholderBuilder: (_) => const Icon(Icons.inbox, size: 80),
+              )
             : const Icon(Icons.inbox, size: 80),
         const SizedBox(height: 30),
-        Text(
-          emptyTitle.isNotEmpty ? emptyTitle : 'No data found',
-        ),
+        Text(emptyTitle.isNotEmpty ? emptyTitle : 'No data found'),
       ],
     );
   }

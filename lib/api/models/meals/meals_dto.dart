@@ -11,11 +11,7 @@ class Meals {
   @JsonKey(name: "idMeal")
   final String? idMeal;
 
-  Meals ({
-    this.strMeal,
-    this.strMealThumb,
-    this.idMeal,
-  });
+  Meals({this.strMeal, this.strMealThumb, this.idMeal});
 
   factory Meals.fromJson(Map<String, dynamic> json) {
     return _$MealsFromJson(json);
@@ -24,11 +20,12 @@ class Meals {
   Map<String, dynamic> toJson() {
     return _$MealsToJson(this);
   }
-  MealsEntity toEntity(){
+
+  MealsEntity toEntity() {
     return MealsEntity(
-        strMealThumb: strMealThumb??"",
-        strMeal: strMeal??"",
-        idMeal: idMeal??""
+      strMealThumb: strMealThumb ?? "",
+      strMeal: strMeal ?? "",
+      idMeal: idMeal ?? "",
     );
   }
 }

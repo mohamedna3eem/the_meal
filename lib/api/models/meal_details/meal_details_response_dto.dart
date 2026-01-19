@@ -9,9 +9,7 @@ class MealDetailsResponseDto {
   @JsonKey(name: "meals")
   final List<MealsDetailsDto>? meals;
 
-  MealDetailsResponseDto ({
-    this.meals,
-  });
+  MealDetailsResponseDto({this.meals});
 
   factory MealDetailsResponseDto.fromJson(Map<String, dynamic> json) {
     return _$MealDetailsResponseDtoFromJson(json);
@@ -20,13 +18,10 @@ class MealDetailsResponseDto {
   Map<String, dynamic> toJson() {
     return _$MealDetailsResponseDtoToJson(this);
   }
-   MealDetailsResponseEntity toEntity(){
+
+  MealDetailsResponseEntity toEntity() {
     return MealDetailsResponseEntity(
-      meals: meals?.map((dto)=>dto.toEntity()).toList()??[]
+      meals: meals?.map((dto) => dto.toEntity()).toList() ?? [],
     );
-   }
+  }
 }
-
-
-
-

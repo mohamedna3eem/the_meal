@@ -1,5 +1,5 @@
 class MealCatResponseEntity {
-   List<CategoriesEntity> categories ;
+  List<CategoriesEntity> categories;
 
   MealCatResponseEntity({required this.categories});
 }

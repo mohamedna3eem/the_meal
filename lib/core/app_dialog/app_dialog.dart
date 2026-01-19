@@ -83,7 +83,11 @@ class AppDialog extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2)),
+                  const SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  ),
                   const SizedBox(width: 12),
                   Text(loadingText ?? 'Loading...'),
                 ],
@@ -98,9 +102,9 @@ class AppDialog extends StatelessWidget {
                 onPressed: showLoading
                     ? null
                     : () {
-                  Navigator.of(context).pop();
-                  if (onAction != null) onAction!();
-                },
+                        Navigator.of(context).pop();
+                        if (onAction != null) onAction!();
+                      },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [Text(btnText)],
@@ -155,7 +159,9 @@ class AppDialog extends StatelessWidget {
         errorBuilder: (context, error, stackTrace) {
           return SizedBox(
             height: height,
-            child: const Center(child: Icon(Icons.broken_image, size: 64, color: Colors.white)),
+            child: const Center(
+              child: Icon(Icons.broken_image, size: 64, color: Colors.white),
+            ),
           );
         },
       );
@@ -182,18 +188,17 @@ class AppDialog extends StatelessWidget {
     bool dismissible = true,
     bool showLoading = false,
     String? loadingText,
-  }) =>
-      AppDialog(
-        message: message,
-        imageAsset: imageAsset,
-        networkImageUrl: networkImageUrl,
-        buttonText: buttonText,
-        onAction: onAction,
-        backgroundColor: backgroundColor,
-        dismissible: dismissible,
-        showLoading: showLoading,
-        loadingText: loadingText,
-      );
+  }) => AppDialog(
+    message: message,
+    imageAsset: imageAsset,
+    networkImageUrl: networkImageUrl,
+    buttonText: buttonText,
+    onAction: onAction,
+    backgroundColor: backgroundColor,
+    dismissible: dismissible,
+    showLoading: showLoading,
+    loadingText: loadingText,
+  );
 
   factory AppDialog.error({
     required String message,
@@ -205,18 +210,17 @@ class AppDialog extends StatelessWidget {
     bool dismissible = true,
     bool showLoading = false,
     String? loadingText,
-  }) =>
-      AppDialog(
-        message: message,
-        imageAsset: imageAsset,
-        networkImageUrl: networkImageUrl,
-        buttonText: buttonText,
-        onAction: onAction,
-        backgroundColor: backgroundColor,
-        dismissible: dismissible,
-        showLoading: showLoading,
-        loadingText: loadingText,
-      );
+  }) => AppDialog(
+    message: message,
+    imageAsset: imageAsset,
+    networkImageUrl: networkImageUrl,
+    buttonText: buttonText,
+    onAction: onAction,
+    backgroundColor: backgroundColor,
+    dismissible: dismissible,
+    showLoading: showLoading,
+    loadingText: loadingText,
+  );
 
   /// For "coming soon" default to showing a loader (you can override)
   factory AppDialog.soon({
@@ -229,18 +233,17 @@ class AppDialog extends StatelessWidget {
     bool dismissible = true,
     bool showLoading = true,
     String? loadingText,
-  }) =>
-      AppDialog(
-        message: message,
-        imageAsset: imageAsset,
-        networkImageUrl: networkImageUrl,
-        buttonText: buttonText ?? 'OK',
-        onAction: onAction,
-        backgroundColor: backgroundColor,
-        dismissible: dismissible,
-        showLoading: showLoading,
-        loadingText: loadingText,
-      );
+  }) => AppDialog(
+    message: message,
+    imageAsset: imageAsset,
+    networkImageUrl: networkImageUrl,
+    buttonText: buttonText ?? 'OK',
+    onAction: onAction,
+    backgroundColor: backgroundColor,
+    dismissible: dismissible,
+    showLoading: showLoading,
+    loadingText: loadingText,
+  );
 
   factory AppDialog.result({
     required String message,
@@ -253,28 +256,27 @@ class AppDialog extends StatelessWidget {
     bool dismissible = true,
     bool showLoading = false,
     String? loadingText,
-  }) =>
-      isSuccess
-          ? AppDialog.success(
-        message: message,
-        imageAsset: imageAsset,
-        networkImageUrl: networkImageUrl,
-        buttonText: buttonText,
-        onAction: onAction,
-        backgroundColor: backgroundColor,
-        dismissible: dismissible,
-        showLoading: showLoading,
-        loadingText: loadingText,
-      )
-          : AppDialog.error(
-        message: message,
-        imageAsset: imageAsset,
-        networkImageUrl: networkImageUrl,
-        buttonText: buttonText,
-        onAction: onAction,
-        backgroundColor: backgroundColor,
-        dismissible: dismissible,
-        showLoading: showLoading,
-        loadingText: loadingText,
-      );
+  }) => isSuccess
+      ? AppDialog.success(
+          message: message,
+          imageAsset: imageAsset,
+          networkImageUrl: networkImageUrl,
+          buttonText: buttonText,
+          onAction: onAction,
+          backgroundColor: backgroundColor,
+          dismissible: dismissible,
+          showLoading: showLoading,
+          loadingText: loadingText,
+        )
+      : AppDialog.error(
+          message: message,
+          imageAsset: imageAsset,
+          networkImageUrl: networkImageUrl,
+          buttonText: buttonText,
+          onAction: onAction,
+          backgroundColor: backgroundColor,
+          dismissible: dismissible,
+          showLoading: showLoading,
+          loadingText: loadingText,
+        );
 }

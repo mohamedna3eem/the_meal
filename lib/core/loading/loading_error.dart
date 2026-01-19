@@ -21,7 +21,7 @@ class LoadingErrorWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SvgPicture.asset( "assets/images/error.svg", width: 64, height: 64),
+          SvgPicture.asset("assets/images/error.svg", width: 64, height: 64),
           const SizedBox(height: 32),
           Text("unexpected_error", textAlign: TextAlign.center),
           const SizedBox(height: 12),

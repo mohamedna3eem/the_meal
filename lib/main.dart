@@ -3,9 +3,9 @@ import 'package:the_meal/core/di/di.dart';
 import 'package:the_meal/core/router/app_router.dart';
 import 'package:the_meal/core/router/routes_name.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   configureDependencies();
+  configureDependencies();
   runApp(const MyApp());
 }
 
@@ -26,5 +26,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
