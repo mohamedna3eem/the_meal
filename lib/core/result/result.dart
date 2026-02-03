@@ -9,6 +9,8 @@ sealed class Result<S, E extends Exception> {
     required T Function(S data) onSuccess,
     required T Function(E exception) onFailure,
   });
+
+
 }
 
 final class Success<S, E extends Exception> extends Result<S, E> {
@@ -59,3 +61,5 @@ Future<Result<TOut, NetworkException>> safeApiCall<TIn, TOut>(
     return Failure<TOut, NetworkException>(UnknownException());
   }
 }
+
+

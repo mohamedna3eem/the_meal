@@ -8,8 +8,9 @@ import 'package:the_meal/presentation/meals/view_model/meals_view_model.dart';
 
 class MealsScreen extends StatelessWidget {
   final String categoryName;
+    const MealsScreen({super.key, required this.categoryName});
 
-  const MealsScreen({super.key, required this.categoryName});
+
 
   @override
   Widget build(BuildContext context) {

@@ -11,7 +11,7 @@ class MealsCubit extends Cubit<MealsState> {
   final String id;
 
   MealsCubit(this.getMealsUseCase, @factoryParam this.id)
-    : super( MealsInitial()) {
+    : super(MealsInitial()) {
     loadMeals();
   }
 
@@ -20,7 +20,7 @@ class MealsCubit extends Cubit<MealsState> {
 
   Future<void> loadMeals() async {
     loading = Loading();
-    emit( MealsLoading());
+    emit(MealsLoading());
 
     final result = await getMealsUseCase(id);
     result.fold(

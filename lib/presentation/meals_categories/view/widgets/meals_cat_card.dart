@@ -29,12 +29,14 @@ class MealsCatCard extends StatelessWidget {
                 borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(12),
                 ),
+                ///////////////////////////////////////
                 child: Image.network(
                   category.strCategoryThumb,
                   fit: BoxFit.cover,
-                  errorBuilder: (_, __, ___) =>
+                  errorBuilder: (_,__,___) =>
                       const Icon(Icons.fastfood, size: 50),
                 ),
+                ////////////////////////////////////////
               ),
             ),
             Padding(
