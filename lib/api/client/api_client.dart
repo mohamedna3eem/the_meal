@@ -4,20 +4,19 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:the_meal/api/models/meal_details/meal_details_response_dto.dart';
 import 'package:the_meal/api/models/meals/meals_response_dto.dart';
+import 'package:the_meal/core/constans/end_points.dart';
 part 'api_client.g.dart';
 
-@RestApi(baseUrl: 'https://www.themealdb.com/api/json/v1/1/')
+@RestApi(baseUrl:EndPoints.baseUrl)
 @injectable
 abstract class ApiClient {
   @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
 
-  @GET("categories.php")
+  @GET(EndPoints.getAllCat)
   Future<MealCatResponseDto> getAllCat();
-  @GET("filter.php")
+  @GET(EndPoints.getMealId)
   Future<MealsResponseDto> getMealId(@Query("c") String mealId);
-  @GET("lookup.php")
+  @GET(EndPoints.getMealById)
   Future<MealDetailsResponseDto> getMealById(@Query("i") String mealId);
-
-
 }

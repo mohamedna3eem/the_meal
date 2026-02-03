@@ -1,30 +1,32 @@
 import 'package:dio/dio.dart';
+import 'package:the_meal/core/Failure/network_exeption.dart';
 
-String handleDioError(DioException error) {
+NetworkException handleDioError(DioException error) {
   switch (error.type) {
     case DioExceptionType.connectionTimeout:
-      return "connection Timeout";
+      return RequestTimeoutException();
 
     case DioExceptionType.sendTimeout:
-      return "sendTimeout";
+      return SendTimeoutException();
 
     case DioExceptionType.receiveTimeout:
-      return "receiveTimeout";
+      return ReceiveTimeoutException();
 
     case DioExceptionType.badCertificate:
-      return "badCertificate";
+      return BadCertificateException();
 
     case DioExceptionType.badResponse:
-      return _extractErrorMessageFromResponse(error.response);
+      return BadResponseException(statusCode: error.response?.statusCode);
 
     case DioExceptionType.cancel:
-      return "dioErrorCancel";
+      return RequestCancelledException();
 
     case DioExceptionType.connectionError:
-      return "connectionError";
+      return ConnectionErrorException();
 
     case DioExceptionType.unknown:
-      return "unknownError ${error.message}";
+
+      return UnknownException();
   }
 }
 

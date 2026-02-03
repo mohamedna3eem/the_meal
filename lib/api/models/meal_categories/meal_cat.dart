@@ -14,7 +14,7 @@ class CategoriesDto {
   @JsonKey(name: "strCategoryDescription")
   final String? strCategoryDescription;
 
-  CategoriesDto ({
+  CategoriesDto({
     this.idCategory,
     this.strCategory,
     this.strCategoryThumb,
@@ -28,12 +28,13 @@ class CategoriesDto {
   Map<String, dynamic> toJson() {
     return _$CategoriesDtoToJson(this);
   }
-  CategoriesEntity toEntity(){
+
+  CategoriesEntity toEntity() {
     return CategoriesEntity(
-        idCategory: idCategory,
-        strCategory: strCategory,
-        strCategoryDescription: strCategoryDescription,
-        strCategoryThumb: strCategoryThumb
+      idCategory: idCategory ?? "",
+      strCategory: strCategory ?? "",
+      strCategoryDescription: strCategoryDescription ?? "",
+      strCategoryThumb: strCategoryThumb ?? "",
     );
   }
 }

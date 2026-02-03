@@ -1,4 +1,3 @@
-
 import 'package:json_annotation/json_annotation.dart';
 import 'package:the_meal/api/models/meal_categories/meal_cat.dart';
 import 'package:the_meal/domain/entites/meal_cat_response_entity.dart';
@@ -9,9 +8,7 @@ class MealCatResponseDto {
   @JsonKey(name: "categories")
   final List<CategoriesDto>? categories;
 
-  MealCatResponseDto ({
-    this.categories,
-  });
+  MealCatResponseDto({this.categories});
 
   factory MealCatResponseDto.fromJson(Map<String, dynamic> json) {
     return _$MealCatResponseDtoFromJson(json);
@@ -20,13 +17,10 @@ class MealCatResponseDto {
   Map<String, dynamic> toJson() {
     return _$MealCatResponseDtoToJson(this);
   }
-  MealCatResponseEntity toEntity(){
+
+  MealCatResponseEntity toEntity() {
     return MealCatResponseEntity(
-      categories: categories?.map((dto)=>dto.toEntity()).toList() ?? []
+      categories: categories?.map((dto) => dto.toEntity()).toList() ?? [],
     );
   }
 }
-
-
-
-

@@ -8,22 +8,17 @@ part 'meals_response_dto.g.dart';
 class MealsResponseDto {
   @JsonKey(name: "meals")
   final List<Meals>? meals;
-  MealsResponseDto ({
-    this.meals,
-  });
+  MealsResponseDto({this.meals});
   factory MealsResponseDto.fromJson(Map<String, dynamic> json) {
     return _$MealsResponseDtoFromJson(json);
   }
   Map<String, dynamic> toJson() {
     return _$MealsResponseDtoToJson(this);
   }
-  MealsResponseEntity toEntity(){
+
+  MealsResponseEntity toEntity() {
     return MealsResponseEntity(
-      meals: meals?.map((dto)=>dto.toEntity()).toList()?? [] ,
+      meals: meals?.map((dto) => dto.toEntity()).toList() ?? [],
     );
   }
 }
-
-
-
-

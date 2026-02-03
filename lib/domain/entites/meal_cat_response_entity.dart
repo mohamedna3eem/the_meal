@@ -1,19 +1,19 @@
 class MealCatResponseEntity {
-  final List<CategoriesEntity>? categories;
+  List<CategoriesEntity> categories;
 
-  MealCatResponseEntity({this.categories});
+  MealCatResponseEntity({required this.categories});
 }
 
 class CategoriesEntity {
-  final String? idCategory;
-  final String? strCategory;
-  final String? strCategoryThumb;
-  final String? strCategoryDescription;
+  final String idCategory;
+  final String strCategory;
+  final String strCategoryThumb;
+  final String strCategoryDescription;
 
   CategoriesEntity({
-    this.idCategory,
-    this.strCategory,
-    this.strCategoryThumb,
-    this.strCategoryDescription,
+    required this.idCategory,
+    required this.strCategory,
+    required this.strCategoryThumb,
+    required this.strCategoryDescription,
   });
 }

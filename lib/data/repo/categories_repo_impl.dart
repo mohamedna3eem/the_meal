@@ -1,33 +1,44 @@
 import 'package:injectable/injectable.dart';
-import 'package:the_meal/core/api_result/api_result.dart';
-
-import 'package:the_meal/data/data_source/categories_remote_data_source.dart';
+import 'package:the_meal/api/client/api_client.dart';
+import 'package:the_meal/core/Failure/network_exeption.dart';
+import 'package:the_meal/core/result/result.dart';
 import 'package:the_meal/domain/entites/meal_cat_response_entity.dart';
 import 'package:the_meal/domain/entites/meals_details_response_entity.dart';
 import 'package:the_meal/domain/entites/meals_entity.dart';
-
-import '../../domain/repo/categories_repo.dart';
+import 'package:the_meal/domain/repo/categories_repo.dart';
 
 @Injectable(as: CategoriesRepo)
 class CategoriesRepoImpl implements CategoriesRepo {
-  CategoriesRemoteDataSource categoriesRemoteDataSource;
+  final ApiClient apiClient;
 
-  CategoriesRepoImpl(this.categoriesRemoteDataSource);
+  CategoriesRepoImpl(this.apiClient);
 
   @override
-  Future<ApiResult<MealCatResponseEntity>> getMealsCategories() async {
-    return categoriesRemoteDataSource.getMealsCategories();
+  Future<Result<MealCatResponseEntity, NetworkException>>
+  getMealsCategories() async {
+    return safeApiCall(
+      () => apiClient.getAllCat(),
+      (response) => response.toEntity(),
+    );
   }
 
   @override
-  Future<ApiResult<MealsResponseEntity>> getMeals(String id) async {
-    return categoriesRemoteDataSource.getMeals(id);
-  }
-
-  @override
-  Future<ApiResult<MealDetailsResponseEntity>> getMealsDetails(
+  Future<Result<MealsResponseEntity, NetworkException>> getMeals(
     String id,
   ) async {
-    return categoriesRemoteDataSource.getMealsDetails(id);
+    return safeApiCall(
+      () => apiClient.getMealId(id),
+      (response) => response.toEntity(),
+    );
+  }
+
+  @override
+  Future<Result<MealDetailsResponseEntity, NetworkException>> getMealsDetails(
+    String id,
+  ) async {
+    return safeApiCall(
+      () => apiClient.getMealById(id),
+      (response) => response.toEntity(),
+    );
   }
 }
